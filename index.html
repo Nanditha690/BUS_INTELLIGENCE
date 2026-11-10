@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bus Intelligence Dashboard</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- PapaParse CSV Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>BUS INTELLIGENCE</h2>
+
+        <ul>
+            <li><a href="#overview">Dashboard Overview</a></li>
+            <li><a href="#revenue">Revenue Dashboard</a></li>
+            <li><a href="#routes">Route Analytics</a></li>
+            <li><a href="#passengers">Passenger Analytics</a></li>
+            <li><a href="#collection">Collection Analytics</a></li>
+        </ul>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header>
+
+            <h1>Bus Intelligence Dashboard</h1>
+
+            <p>Revenue, Route, Passenger and Collection Analysis</p>
+
+        </header>
+
+
+        <!-- DASHBOARD OVERVIEW -->
+
+        <section id="overview">
+
+            <h2>Dashboard Overview</h2>
+
+            <div class="kpi-container">
+
+                <div class="kpi-card">
+                    <h3>Total Revenue</h3>
+                    <h1 id="totalRevenue">₹0</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Total Uncollected</h3>
+                    <h1 id="totalUncollected">₹0</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Collection Percentage</h3>
+                    <h1 id="collectionPercentage">0%</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Total Passengers</h3>
+                    <h1 id="totalPassengers">0</h1>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVENUE DASHBOARD -->
+
+        <section id="revenue">
+
+            <h2>1. Revenue Dashboard</h2>
+
+            <div class="kpi-container">
+
+                <div class="kpi-card">
+                    <h3>Total Amount Collected</h3>
+                    <h1 id="amountCollected">₹0</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Total Amount Uncollected</h3>
+                    <h1 id="amountUncollected">₹0</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Collection Percentage</h3>
+                    <h1 id="revenueCollectionPercentage">0%</h1>
+                </div>
+
+            </div>
+
+            <div class="chart-grid">
+
+                <div class="chart-card">
+                    <h3>Daily Collection Trends</h3>
+                    <canvas id="dailyCollectionChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Collected vs Uncollected Amount</h3>
+                    <canvas id="revenueComparisonChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROUTE ANALYTICS -->
+
+        <section id="routes">
+
+            <h2>2. Route Analytics</h2>
+
+            <div class="chart-grid">
+
+                <div class="chart-card">
+                    <h3>Most Popular Boarding Stops</h3>
+                    <canvas id="boardingStopsChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Most Popular Destinations</h3>
+                    <canvas id="destinationChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Popular From-To Combinations</h3>
+                    <canvas id="routeCombinationChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Low Demand Routes</h3>
+                    <canvas id="lowDemandChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PASSENGER ANALYTICS -->
+
+        <section id="passengers">
+
+            <h2>3. Passenger Analytics</h2>
+
+            <div class="kpi-container">
+
+                <div class="kpi-card">
+                    <h3>Total Recorded Passengers</h3>
+                    <h1 id="passengerCount">0</h1>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Peak Travel Hour</h3>
+                    <h1 id="peakTravelHour">N/A</h1>
+                </div>
+
+            </div>
+
+            <div class="chart-grid">
+
+                <div class="chart-card">
+                    <h3>Passenger Distribution by Stop</h3>
+                    <canvas id="passengerStopChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Hourly Passenger Demand</h3>
+                    <canvas id="hourlyDemandChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLLECTION ANALYTICS -->
+
+        <section id="collection">
+
+            <h2>4. Collection Analytics</h2>
+
+            <div class="chart-grid">
+
+                <div class="chart-card">
+                    <h3>Waybill-wise Collection</h3>
+                    <canvas id="waybillChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Collection vs Uncollected Amount</h3>
+                    <canvas id="collectionComparisonChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Unusual Collection Patterns</h3>
+                    <canvas id="unusualCollectionChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Collection Performance Over Time</h3>
+                    <canvas id="collectionPerformanceChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DATA TABLE -->
+
+        <section id="dataset">
+
+            <h2>Dataset Preview</h2>
+
+            <div class="table-container">
+
+                <table id="dataTable">
+
+                    <thead></thead>
+
+                    <tbody></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>Bus Intelligence Dashboard | Business Analytics Project</p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- JAVASCRIPT FILE -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
